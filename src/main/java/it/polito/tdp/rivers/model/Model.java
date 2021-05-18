@@ -136,9 +136,9 @@ public class Model {
 				this.giorniOut++;
 				this.C=0;
 				this.CMed += C;
+				break;
 			} else{
 				this.C += (flowIn-flowOut);
-				this.CMed += C;
 			}
 			
 			if(C>Q){
@@ -146,14 +146,15 @@ public class Model {
 				temp.setFlowOut(C-Q);
 				temp.setFlowIn(0);
 				this.queue.add(temp);
-			} 
-			
-			
+			} else {
+				this.CMed += C;
+			}
 			
 			break;
 		
 		case TRACIMAZIONE:
 			C -= e.getFlowOut();
+			this.CMed += C;
 			break;
 		}
 		
